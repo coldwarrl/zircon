@@ -116,7 +116,7 @@ abstract class BaseComponentBuilder<T : Component, U : ComponentBuilder<T, U>>(
         return this as U
     }
 
-    internal fun withProps(props: CommonComponentProperties<T>): U {
+    fun withProps(props: CommonComponentProperties<T>): U {
         this.props = props
         return this as U
     }
