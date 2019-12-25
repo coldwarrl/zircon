@@ -16,6 +16,7 @@ import org.hexworks.zircon.api.util.TextUtils
 import org.hexworks.zircon.internal.Zircon
 import org.hexworks.zircon.internal.behavior.impl.DefaultScrollable
 import org.hexworks.zircon.internal.component.impl.textedit.EditableTextBuffer
+import org.hexworks.zircon.internal.component.impl.textedit.TextBufferTransformation
 import org.hexworks.zircon.internal.component.impl.textedit.cursor.MovementDirection.*
 import org.hexworks.zircon.internal.component.impl.textedit.transformation.AddRowBreak
 import org.hexworks.zircon.internal.component.impl.textedit.transformation.DeleteCharacter
@@ -117,6 +118,15 @@ class DefaultTextArea constructor(
                 Processed
             }
         } else Pass
+    }
+
+    fun applyExternalTransformation(transformation: TextBufferTransformation)
+    {
+        textBuffer.applyTransformation(transformation)
+        refreshVirtualSpaceSize()
+        scrollToCursor()
+        refreshCursor()
+        render()
     }
 
     private fun isNavigationKey(event: KeyboardEvent) =
