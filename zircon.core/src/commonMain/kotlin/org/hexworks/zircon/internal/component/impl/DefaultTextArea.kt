@@ -129,6 +129,15 @@ class DefaultTextArea constructor(
         render()
     }
 
+    fun applyExternalTransformation(transformation: TextBufferTransformation)
+    {
+        textBuffer.applyTransformation(transformation)
+        refreshVirtualSpaceSize()
+        scrollToCursor()
+        refreshCursor()
+        render()
+    }
+
     private fun isNavigationKey(event: KeyboardEvent) =
             event == TAB || event == REVERSE_TAB
 
