@@ -13,6 +13,7 @@ class SwingFrame(val tileGrid: InternalTileGrid,
     init {
         title = config.title
         add(canvas)
+        isResizable = true
     }
 
     val renderer: SwingCanvasRenderer = SwingCanvasRenderer(

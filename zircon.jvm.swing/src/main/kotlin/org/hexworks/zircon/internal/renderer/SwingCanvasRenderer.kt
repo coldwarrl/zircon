@@ -53,6 +53,8 @@ class SwingCanvasRenderer(private val canvas: Canvas,
         }
     }
 
+
+
     override fun create() {
         if (config.fullScreen) {
             frame.extendedState = JFrame.MAXIMIZED_BOTH
@@ -62,7 +64,8 @@ class SwingCanvasRenderer(private val canvas: Canvas,
         }
 
         frame.isVisible = true
-        frame.isResizable = false
+        //frame.isResizable = false
+
         frame.addWindowStateListener {
             if (it.newState == Frame.NORMAL) {
                 render()
@@ -96,6 +99,7 @@ class SwingCanvasRenderer(private val canvas: Canvas,
         // buffering
         canvas.createBufferStrategy(2)
         initializeBufferStrategy()
+
     }
 
     override fun close() {
@@ -104,6 +108,7 @@ class SwingCanvasRenderer(private val canvas: Canvas,
     }
 
     override fun render() {
+        //frame.isResizable = false
         val now = SystemUtils.getCurrentTimeMs()
 
         keyboardEventListener.drainEvents().forEach { (event, phase) ->
