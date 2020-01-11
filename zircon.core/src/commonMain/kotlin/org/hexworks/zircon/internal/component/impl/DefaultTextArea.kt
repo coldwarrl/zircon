@@ -129,6 +129,7 @@ class DefaultTextArea constructor(
         render()
     }
 
+
     private fun isNavigationKey(event: KeyboardEvent) =
             event == TAB || event == REVERSE_TAB
 
